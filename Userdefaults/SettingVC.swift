@@ -12,6 +12,7 @@ class SettingVC: UITableViewController {
     
     @IBOutlet weak var measurementText: UILabel!
     @IBOutlet weak var unitText: UILabel!
+    @IBOutlet weak var currentPic: UIImageView!
     
     var currentUnit = UnitMeasurement.miles {
         didSet {
@@ -22,11 +23,28 @@ class SettingVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userPreference.shared.getMeasurement()
+        updateUI()
+        updatePic()
+    }
+    
+    var currentImage = UnitMeasurement.miles {
+        didSet {
+            currentPic.image = UIImage(named: currentImage.rawValue)
+            userPreference.shared.updatePic(pic: currentImage)
+        }
+    }
+    
+    private func updatePic() {
+        if let unitPic = userPreference.shared.getImage() {
+            currentImage = unitPic
+        }
     }
     
     private func updateUI() {
-        // retrieve any values in Userdefaults 
+        // retrieve any values in Userdefaults
+        if let unitMeasure = userPreference.shared.getMeasurement() {
+            currentUnit = unitMeasure
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -34,6 +52,8 @@ class SettingVC: UITableViewController {
         switch indexPath.row {
         case 0:
             toggleUnit()
+        case 1:
+            tooglePic()
         default:
             break
         }
@@ -43,4 +63,7 @@ class SettingVC: UITableViewController {
         currentUnit = (currentUnit == UnitMeasurement.miles) ? UnitMeasurement.km : UnitMeasurement.miles
     }
     
+    private func tooglePic() {
+        currentImage = (currentImage == UnitMeasurement.miles) ? UnitMeasurement.km : UnitMeasurement.miles
+    }
 }

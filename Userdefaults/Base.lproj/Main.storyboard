@@ -75,6 +75,20 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="tuz-W6-Rco">
+                                        <rect key="frame" x="0.0" y="99" width="414" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tuz-W6-Rco" id="Rw1-jB-ovA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Miles" translatesAutoresizingMaskIntoConstraints="NO" id="aZl-mf-vNj">
+                                                    <rect key="frame" x="20" y="11" width="374" height="278"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -85,6 +99,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="tOj-jc-14e"/>
                     <connections>
+                        <outlet property="currentPic" destination="aZl-mf-vNj" id="KRC-hn-0Zh"/>
                         <outlet property="measurementText" destination="78u-hU-LCK" id="rmu-jw-yq5"/>
                         <outlet property="unitText" destination="h5L-Wx-Vw9" id="XMZ-wv-fTQ"/>
                     </connections>
@@ -112,4 +127,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Miles" width="1120" height="726"/>
+    </resources>
 </document>

@@ -15,6 +15,7 @@ enum UnitMeasurement: String {
 
 struct userKey {
     static let unitMeasurement = "Unit Measurement"
+    static let picImage = "User Picture"
 }
 
 class userPreference {
@@ -29,6 +30,18 @@ class userPreference {
         standard.set(unit.rawValue, forKey: userKey.unitMeasurement) // UserDefaults.standard.set
     }
     
+    func updatePic(pic: UnitMeasurement) {
+        standard.set(pic.rawValue, forKey: userKey.picImage)
+    }
+    
+    func getImage() -> UnitMeasurement? {
+        guard let unitPic = standard.object(forKey: userKey.picImage) as? String else {
+            return nil
+        }
+        return UnitMeasurement(rawValue: unitPic)
+    }
+    
+  
     func getMeasurement() -> UnitMeasurement? {
         guard let unitMeasurement = standard.object(forKey: userKey.unitMeasurement) as? String else {
             return nil
