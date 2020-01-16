@@ -17,34 +17,27 @@ class SettingVC: UITableViewController {
     var currentUnit = UnitMeasurement.miles {
         didSet {
             unitText.text = currentUnit.rawValue
-            userPreference.shared.updateUnitMeasurement(unit: currentUnit)
+            UserPreference.shared.updateDefaults(with: currentUnit.rawValue, for: userKey.unitMeasurement)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        updatePic()
     }
     
     var currentImage = UnitMeasurement.miles {
         didSet {
             currentPic.image = UIImage(named: currentImage.rawValue)
-            userPreference.shared.updatePic(pic: currentImage)
+            UserPreference.shared.updateDefaults(with: currentImage.rawValue, for: userKey.picImage)
         }
     }
     
-    private func updatePic() {
-        if let unitPic = userPreference.shared.getImage() {
-            currentImage = unitPic
-        }
-    }
+    
     
     private func updateUI() {
         // retrieve any values in Userdefaults
-        if let unitMeasure = userPreference.shared.getMeasurement() {
-            currentUnit = unitMeasure
-        }
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
