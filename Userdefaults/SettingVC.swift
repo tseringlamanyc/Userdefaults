@@ -37,7 +37,13 @@ class SettingVC: UITableViewController {
     
     private func updateUI() {
         // retrieve any values in Userdefaults
+        let unitStr: String = UserPreference.shared.getDefaultValue(for: userKey.unitMeasurement) ?? ""
+        let unitMeasurement = UnitMeasurement(rawValue: unitStr) ?? UnitMeasurement.miles
+        currentUnit = unitMeasurement
         
+        let picStr: String = UserPreference.shared.getDefaultValue(for: userKey.picImage) ?? ""
+        let defaultImage = UnitMeasurement(rawValue: picStr) ?? UnitMeasurement.miles
+        currentImage = defaultImage
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
